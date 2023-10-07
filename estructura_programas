@@ -1,0 +1,36 @@
+---------------------------------------------
+Estructura del archivo final de entrenamiento
+- Inicialización de GPU
+- Aumento de las imágenes y preprocesamiento
+- División de los subconjuntos de entrenamiento y prueba
+- descarga de modelo o creación del modelo
+- compilación
+- corrida de épocas
+- evaluación
+- guarda resultados
+- guarda modelo entrenado para la inferencia
+
+-----------------------------------------------
+Estructura del archivo final de inferencia
+¿En qué sistema va a correr?
+
+
+---------------------------------------------
+Programas en total que son necesarios
+EN TOTAL SON 10 ARCHIVOS
+Si hay tiempo hhay que aumentar uno con mindspore
+
+archivo de imágenes para dos clasificaciones
+	-el comando viejo ImageDataGenerator y sus comandos consecuentes  Emisiones_2_old
+	-el comando nuevo image_dataset_from_directory y sus comandos consecuentes  Emisiones_2_new
+	
+
+archivo de imágenes para tres clasificaciones
+	-el comando viejo ImageDataGenerator y sus comandos consecuentes Emisiones_3_old
+	-el comando nuevo image_dataset_from_directory y sus comandos consecuentes Emisiones_3_new
+
+
+tres archivos de video para dos clasificaciones uno con yolov8, otro con movinet y otro con roboflow
+
+tres archivos de video para tres clasificaciones uno con yolov8, otro con movinet y otro con roboflow
+---------------------------
