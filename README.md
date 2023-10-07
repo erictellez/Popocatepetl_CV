@@ -1,2 +1,2 @@
-# Webcams_popo
-Software to process webcams surveying Popocatepetl volcano
+# Popocatepetl_CV
+Software to process Popocatepetl video trought computational vision.
