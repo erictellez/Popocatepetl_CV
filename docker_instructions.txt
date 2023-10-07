@@ -1,0 +1,156 @@
+
+
+-----------------------
+#Para copiar archivos a la dgtic
+scp -p22 c:\Users\radar2\Desktop\Emisiones_noEmisiones.py 2022_04@132.248.137.163:
+
+---------------------
+###  Con Dockerfile #poner la primera D con mayúsculas en el nombre Dockerfile
+#Con la siguiente instrucción el dockerfile es Dockerfile por default
+docker build -t tensorflow_hub .
+docker run -it --rm -v $PWD:/2022_04 -w /2022_04 tensorflow_hub python ./Emisiones_noEmisiones.py
+
+## Con la siguiente instrucción se le puede poner cualquier nombre al dockerfile
+docker build -f DockerfileY -t tensorflow_hub .
+
+-------------------------------------------
+docker build -t tensorflow_hub .
+docker run -it --rm -v $PWD:/2022_04 -w /2022_04 tensorflow_hub -name popocatepetl python ./Emisiones_noEmisiones.py
+
+-----------------------------------
+Con puerto de red accesible para Jupyter
+
+docker build -t tensorflow_hub .
+docker run -it --rm -v $PWD:/2022_04 -w /2022_04 -p 8888:8888 tensorflow_hub -name popocatepetl python ./Emisiones_noEmisiones.py
+
+-----------------------------------------------
+### Este sí funciona, pero necesita instalarle librerías al contenedor
+docker run -it --rm -v $PWD:/2022_04 -w /2022_04 tensorflow/tensorflow python ./Emisiones_noEmisiones.py
+---------------------------------------------
+
+
+
+
+
+docker run -it --rm -v $PWD:/2022_04 -w /2022_04 tensorflow/tensorflow:latest-gpu-py3-jupyter python ./Emisiones_noEmisiones.py
+
+#Para que se ejecute al fondo
+docker run -it --rm -d -v $PWD:/2022_04 -w /2022_04 tensorflow/tensorflow python ./Emisiones_noEmisiones.py
+
+#Con nombre popocatepetl para que se ejecute al fondo pero se pueda acceder
+docker run --name popocatepetl -it --rm -d -v $PWD:/2022_04 -w /2022_04 tensorflow/tensorflow python ./Emisiones_noEmisiones.py
+
+#Después de ejecturar el contenendor al fondo, se puede acceder con estas instrucciones
+
+docker exec -it popocatepetl bash
+
+docker exec -it popocatepetl python
+
+
+docker run -it --rm -v $(realpath ~/notebooks):/tf/notebooks -p 8888:8888 tensorflow/tensorflow:latest-jupyter
+
+#El contenedor de Jupyter no va a correr porque hay problemas con la versión
+docker run --name popocatepetl -it -p 6666:6666 tensorflow/tensorflow:latest-jupyter sleep infinity
+
+---------------------------------------
+Este sí funciona
+docker run -it -p 8888:8888 tensorflow/tensorflow:nightly-jupyter
+------------------------------------------------
+
+----------------------------------------
+## Este también funciona pero no reconoce las carpetas de trabajo
+docker run -it -p 8888:8888 -v $PWD:/2022_04 -w /2022_04 tensorflow/tensorflow:nightly-jupyter 
+------------------------
+
+
+docker run --name popocatepetl -d -v ~/2022_04/Popo_Imag:/var/log/ork -p 5000:80 tensorflow/tensorflow sleep infinity
+
+En mac
+docker run --rm -it -v /2022_04/programas/:/var/log/work gcr.io/tensorflow/tensorflow bash
+
+--------------------------------------------------
+################33
+La imagen jupyter/tensorflow-notebook nunca funcionó con el sistema operativo de la dgtic
+# Estas instrucciones eran para definir el usuario
+
+docker run -it  --rm --user $(id -u):$(id -g) --group-add users --name contenedor_popo -p 8083:8888 -p 6007:6007 -v "${PWD}":/home/jovyan/work jupyter/
+tensorflow-notebook bash
+
+docker run -d --user $(id -u):$(id -g) --group-add users --name contenedor_popocatepetl -p 8083:8888 -p 6007:6007 -v "${PWD}":/home/jovyan/work jupyter/
+tensorflow-notebook:latest sleep infinity
+
+docker run -d --user $(id -u):$(id -g) --group-add users --name contenedor_popocatepetl -p 8083:8888 -p 6007:6007 -v /home/2022_04:/home/jovyan/work jupyter/
+tensorflow-notebook:latest sleep infinity
+
+docker run -it -p 8888:8888 -v $PWD:/2022_04 -w /2022_04 jupyter/tensorflow-notebook:latest
+
+-----------------------------------------------------------
+La siguiente instrucción produce un contenedor healthy pero sigo sin poder crear un archivo ahí
+
+docker run -it -p 8083:8888 -p 6007:6007 --name popocatepetl jupyterhub/jupyterhub bash
+
+docker run -d -p 8083:8888 -p 6007:6007 --name iztaccihuatl jupyterhub/jupyterhub jupyterhub
+
+
+
+docker run -it -p 8083:8888 -p 6007:6007 -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=popocatepetl --name contenedor_popocatepetl -d jupyter/tensorflow-notebook:latest sleep infinity
+
+docker run -it -p 8083:8888 -p 6007:6007 -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=popocatepetl --name contenedor_popocatepetl --user root jupyter/tensorflow-notebook:latest bash
+
+docker run -d -p 8083:8888 -p 6007:6007 -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=popocatepetl --name contenedor_popocatepetl -u root jupyter/tensorflow-notebook:latest sleep infinity
+
+docker run -d -p 8083:8888 -p 6007:6007 -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=popocatepetl -e CHOWN_HOME=yes -e CHOWN --name contenedor_popocatepetl -u root jupyter/tensorflow-notebook:latest sleep infinity
+
+docker run -d -p 8083:8888 -p 6007:6007 -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=popocatepetl --name contenedor_popocatepetl -u 2022_04 jupyter/tensorflow-notebook:latest sleep infinity
+
+
+Para checar dentro del contenedor
+docker exec -it contenedor_popocatepetl bash
+
+
+-----------------------------------------------------------------------------------------
+
+1. En una terminal
+> ssh 2022_04@132.248.137.163
+Password
+
+$ docker run -d -p 8083:8888 -p 6007:6007 -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=popocatepetl --name contenedor_popocatepetl -u root jupyter/tensorflow-notebook:latest sleep infinity
+
+$ docker exec -it contenedor_popocatepetl bash
+
+# id
+
+# jupyter lab --allow-root
+
+
+
+2. En otra terminal:
+> ssh -N -L localhost:8000:localhost:8083 2022_04@132.248.137.163
+password
+
+
+
+----------------------------------------------------------------------------------
+
+1. En una terminal
+> ssh 2022_04@132.248.137.163
+Password
+
+$ docker run -d -p 8084:8888 -p 6008:6008 -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=popocatepetl --name jupyterhub_popocatepetl -u root jupyterhub/jupyterhub:latest sleep infinity
+
+$ docker exec -it jupyterhub_popocatepetl bash
+
+# id
+
+# jupyter lab --allow-root
+
+
+
+2. En otra terminal:
+> ssh -N -L localhost:8000:localhost:8084 2022_04@132.248.137.163
+password   
+
+-----------------------------------------------------------
+
+
+
