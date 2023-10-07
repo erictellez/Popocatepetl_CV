@@ -148,7 +148,7 @@ $ docker exec -it jupyterhub_popocatepetl bash
 
 2. En otra terminal:
 > ssh -N -L localhost:8000:localhost:8084 2022_04@132.248.137.163
-password   2lkGcGM7mx4I
+password   
 
 -----------------------------------------------------------
 
