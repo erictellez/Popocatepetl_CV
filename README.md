@@ -7,6 +7,9 @@ All the software is written in TensorFlow.
 
 There are several codes. 
 
+-- Emisiones_1.ipynb
+   This notebook is the first we wrote to make some tests in the general database. 
+
 -- Emisiones_2_old.py
    This code is to classify images in 2 different types. One in the volcano not active. The other is when the volcano is active, emissions are visible.
   This code is made with the function ImageDataGenerator that is slow and is not recommended anymore by TensorFlow.
