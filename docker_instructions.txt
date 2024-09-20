@@ -2,7 +2,7 @@
 
 -----------------------
 #Para copiar archivos a la dgtic
-scp -p22 c:\Users\radar2\Desktop\Emisiones_noEmisiones.py 2022_04@132.248.137.163:
+scp -p22 c:\Users\radar2\Desktop\Emisiones_noEmisiones.py USER@REMOTE_HOST:
 
 ---------------------
 ###  Con Dockerfile #poner la primera D con mayúsculas en el nombre Dockerfile
