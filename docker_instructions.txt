@@ -111,7 +111,7 @@ docker exec -it contenedor_popocatepetl bash
 -----------------------------------------------------------------------------------------
 
 1. En una terminal
-> ssh 2022_04@132.248.137.163
+> ssh USER@REMOTE_HOST
 Password
 
 $ docker run -d -p 8083:8888 -p 6007:6007 -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=popocatepetl --name contenedor_popocatepetl -u root jupyter/tensorflow-notebook:latest sleep infinity
@@ -125,7 +125,7 @@ $ docker exec -it contenedor_popocatepetl bash
 
 
 2. En otra terminal:
-> ssh -N -L localhost:8000:localhost:8083 2022_04@132.248.137.163
+> ssh -N -L localhost:8000:localhost:8083 USER@REMOTE_HOST
 password
 
 
@@ -133,7 +133,7 @@ password
 ----------------------------------------------------------------------------------
 
 1. En una terminal
-> ssh 2022_04@132.248.137.163
+> ssh USER@REMOTE_HOST
 Password
 
 $ docker run -d -p 8084:8888 -p 6008:6008 -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN=popocatepetl --name jupyterhub_popocatepetl -u root jupyterhub/jupyterhub:latest sleep infinity
@@ -147,7 +147,7 @@ $ docker exec -it jupyterhub_popocatepetl bash
 
 
 2. En otra terminal:
-> ssh -N -L localhost:8000:localhost:8084 2022_04@132.248.137.163
+> ssh -N -L localhost:8000:localhost:8084 USER@REMOTE_HOST
 password   
 
 -----------------------------------------------------------
